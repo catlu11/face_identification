@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script> -->
+  <script src="face-api.js"></script>
+  <script type="text/javascript" src='ocv.js'></script>
+</head>
+<style>
+  .vid_container {
+    width: 640px;
+    height: 480px;
+    position: relative;
+  }
+  .overlay {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid blue;
+    position: absolute;
+    z-index: 1;
+  }
+  .face {
+    width: 10%;
+    height: 10%;
+  }
+</style>
+<body>
+  <center>
+    Video here:
+    <div class="vid_container">
+        <video style="z-index: 0; position: relative; top: 0; left: 0;" onloadedmetadata="onPlay(this)" id="inputVideo" autoplay muted playsinline></video>
+        <canvas class='overlay' id="overlay" />
+    </div>
+    <form>
+      <label for="fname">Name:</label><br>
+      <input type="text" id="fname" name="fname"><br>
+    </form>
+    <button type="button" onclick="takePic(this)">Take a picture!</button>
+  </center>
+    <div class="col-md-12 text-center">
+      <div class="title d-inline-block" id="face_chart">
+          <h2>List of Faces to be trained</h2>
+          <!-- <img src='/images/nope'> -->
+      </div>
+      <button type="button" onclick="train_and_start(this)">Train on faces!</button>
+ </div>
+
+  <script>
+    $(document).ready(function() {
+      console.log('worko?')
+      run()
+})
+  </script>
+</body>
+</html>
